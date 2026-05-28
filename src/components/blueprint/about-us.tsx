@@ -8,7 +8,15 @@ export function AboutUs() {
   const containerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "0px 0px -100px 0px" });
 
-  const founders = [
+  const team = [
+    {
+      name: "Dr. Satvik Vats",
+      role: "Academic Supervisor / Assistant Professor",
+      org: "Department of Computer Science and Engineering, MMMUT",
+      photo: "https://res.cloudinary.com/doch9ibf6/image/upload/v1779987335/SatvikSir-D5Rf4M18_xawojd.jpg",
+      id: "sv",
+      objectPosition: "center 20%"
+    },
     {
       name: "Yashvardhan Ojha",
       role: "CSE ’27",
@@ -43,10 +51,23 @@ export function AboutUs() {
       }}
     >
       <style dangerouslySetInnerHTML={{ __html: `
-        @media (max-width: 860px) {
+        .founders-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr) !important;
+          gap: 40px !important;
+          max-width: 1080px !important;
+          margin: 0 auto !important;
+        }
+        @media (max-width: 1024px) {
           .about-us-section {
             padding: 32px 24px 48px !important;
           }
+          .founders-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 40px !important;
+          }
+        }
+        @media (max-width: 720px) {
           .founders-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
@@ -73,13 +94,13 @@ export function AboutUs() {
             textTransform: "uppercase",
           }}
         >
-          11 // ADMINISTRATIVE // ABOUT_US
+          {"11 // ADMINISTRATIVE // ABOUT_US"}
         </span>
         <div style={{ flex: 1, height: "1px", background: "rgba(68,115,180,0.12)" }} />
       </div>
 
-      {/* ── Center Header Area ── */}
-      <div style={{ textAlign: "center", marginBottom: "50px" }}>
+      {/* ── Left-aligned Header Area ── */}
+      <div style={{ textAlign: "left", marginBottom: "50px" }}>
         
         {/* Startup under construction label */}
         <p
@@ -90,9 +111,10 @@ export function AboutUs() {
             color: "rgba(100, 160, 225, 0.70)",
             textTransform: "uppercase",
             marginBottom: "20px",
+            textAlign: "left"
           }}
         >
-          ◆ SaaS Startup — Under Construction
+          {"◆ SaaS Startup — Under Construction"}
         </p>
 
         <h2
@@ -104,6 +126,7 @@ export function AboutUs() {
             lineHeight: 1.1,
             color: "rgba(240, 250, 255, 0.99)",
             marginBottom: "24px",
+            textAlign: "left"
           }}
         >
           About Us
@@ -117,8 +140,7 @@ export function AboutUs() {
             lineHeight: 1.68,
             color: "rgba(215, 235, 255, 0.95)",
             maxWidth: "760px",
-            margin: "0 auto",
-            textAlign: "center",
+            textAlign: "left",
           }}
         >
           <p style={{ marginBottom: "16px" }}>
@@ -132,7 +154,6 @@ export function AboutUs() {
               fontSize: "16px",
               lineHeight: 1.68,
               maxWidth: "700px",
-              margin: "0 auto",
             }}
           >
             At the core of Visora is VNGE (Visora Narrative Graph Engine™), our in-house semantic orchestration framework
@@ -141,12 +162,11 @@ export function AboutUs() {
         </div>
       </div>
 
-      {/* ── Meet the Founders Subsection ── */}
+      {/* ── Meet the Founders & Team Subsection ── */}
       <div style={{ marginTop: "64px" }}>
         
-        {/* Subsection Separator */}
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: "12px", marginBottom: "40px" }}>
-          <div style={{ width: "24px", height: "1px", background: "rgba(80,135,205,0.22)" }} />
+        {/* Subsection Separator (Left-aligned) */}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px", marginBottom: "40px" }}>
           <h3
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
@@ -156,23 +176,14 @@ export function AboutUs() {
               letterSpacing: "-0.02em",
             }}
           >
-            Meet the Founders
+            Meet the Founders & Team
           </h3>
-          <div style={{ width: "24px", height: "1px", background: "rgba(80,135,205,0.22)" }} />
+          <div style={{ flex: 1, height: "1px", background: "rgba(80,135,205,0.15)" }} />
         </div>
 
-        {/* Founders side-by-side grid */}
-        <div
-          className="founders-grid"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "1fr 1fr",
-            gap: "80px",
-            maxWidth: "820px",
-            margin: "0 auto",
-          }}
-        >
-          {founders.map((f, i) => (
+        {/* Dynamic Responsive 3-Column Grid */}
+        <div className="founders-grid">
+          {team.map((f, i) => (
             <motion.div
               key={f.id}
               initial={{ opacity: 0, y: 12 }}
@@ -238,15 +249,16 @@ export function AboutUs() {
                 </div>
               </div>
 
-              {/* Founder Meta Text */}
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+              {/* Team Member Meta Text */}
+              <div style={{ display: "flex", flexDirection: "column", gap: "4px", padding: "0 10px" }}>
                 <h4
                   style={{
                     fontFamily: "'Space Grotesk', sans-serif",
-                    fontSize: "18px",
+                    fontSize: "17px",
                     fontWeight: 600,
                     color: "rgba(228, 246, 255, 0.98)",
                     letterSpacing: "-0.015em",
+                    lineHeight: 1.2,
                   }}
                 >
                   {f.name}
@@ -255,9 +267,10 @@ export function AboutUs() {
                 <span
                   style={{
                     fontFamily: "'IBM Plex Mono', monospace",
-                    fontSize: "12.5px",
+                    fontSize: "12px",
                     fontWeight: 500,
                     color: "rgba(180, 215, 255, 0.90)",
+                    lineHeight: 1.3,
                   }}
                 >
                   {f.role}
@@ -266,9 +279,11 @@ export function AboutUs() {
                 <span
                   style={{
                     fontFamily: "'IBM Plex Mono', monospace",
-                    fontSize: "11px",
+                    fontSize: "10.5px",
                     color: "rgba(100, 155, 215, 0.60)",
                     letterSpacing: "0.08em",
+                    lineHeight: 1.3,
+                    marginTop: "2px",
                   }}
                 >
                   {f.org}
