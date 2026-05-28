@@ -51,7 +51,7 @@ export function BlueprintCanvas() {
       }, 50);
       const hideTimer = setTimeout(() => {
         setShowMobileAlert(false);
-      }, 3050);
+      }, 5050);
       return () => {
         clearTimeout(showTimer);
         clearTimeout(hideTimer);
@@ -261,7 +261,7 @@ export function BlueprintCanvas() {
               <span>◆ SYSTEM NOTIFICATION</span>
             </div>
             <p style={{ fontSize: "11px", lineHeight: "1.5", color: "rgba(220, 240, 255, 0.9)", letterSpacing: "0.01em" }}>
-              For the optimal systems blueprint experience, please rotate your device to landscape or switch to a desktop view.
+              Please consider switching to laptop or try turning on the desktop view
             </p>
             {/* Progression shrink bar */}
             <div style={{ width: "100%", height: "2px", background: "rgba(100, 175, 255, 0.15)", marginTop: "4px", position: "relative" }}>
@@ -269,7 +269,7 @@ export function BlueprintCanvas() {
                 style={{
                   height: "100%",
                   background: "rgba(91, 248, 255, 0.8)",
-                  animation: "shrink-bar 3s linear forwards",
+                  animation: "shrink-bar 5s linear forwards",
                 }}
               />
             </div>
